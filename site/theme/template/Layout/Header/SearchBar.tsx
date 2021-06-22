@@ -36,6 +36,30 @@ function isAppleDevice() {
   return /(mac|iphone|ipod|ipad)/i.test(navigator.platform);
 }
 
+class ErrorBoundary extends React.Component<
+  {},
+  {
+    error?: Error | null;
+  }
+> {
+  state = {
+    error: undefined,
+  };
+
+  componentDidCatch(error: Error | null) {
+    this.setState({ error });
+    console.log(error);
+  }
+
+  render() {
+    if (this.state.error) {
+      return null;
+    }
+
+    return this.props.children;
+  }
+}
+
 /**
  * Recompose for algolia DocSearch Component Inspiring by
  *
@@ -174,24 +198,26 @@ const SearchBar = ({
         }
       />
 
-      {SearchModal &&
-        searchModalContainer &&
-        isModalOpen &&
-        ReactDOM.createPortal(
-          <SearchModal
-            navigator={navigator}
-            onClose={handleModalClose}
-            initialScrollY={window.scrollY}
-            initialQuery={searchModalQuery}
-            placeholder={searchPlaceholder}
-            hitComponent={Hit}
-            apiKey={algoliaConfig.apiKey}
-            indexName={algoliaConfig.indexName}
-            transformItems={algoliaConfig.transformData}
-            searchParameters={searchParameters}
-          />,
-          searchModalContainer,
-        )}
+      <ErrorBoundary>
+        {SearchModal &&
+          searchModalContainer &&
+          isModalOpen &&
+          ReactDOM.createPortal(
+            <SearchModal
+              navigator={navigator}
+              onClose={handleModalClose}
+              initialScrollY={window.scrollY}
+              initialQuery={searchModalQuery}
+              placeholder={searchPlaceholder}
+              hitComponent={Hit}
+              apiKey={algoliaConfig.apiKey}
+              indexName={algoliaConfig.indexName}
+              transformItems={algoliaConfig.transformData}
+              searchParameters={searchParameters}
+            />,
+            searchModalContainer,
+          )}
+      </ErrorBoundary>
     </div>
   );
 };
