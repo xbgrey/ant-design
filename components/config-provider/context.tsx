@@ -25,7 +25,7 @@ export const ConfigContext = createReactContext<ConfigConsumerProps>({
   getPrefixCls: (suffixCls: string, customizePrefixCls?: string) => {
     if (customizePrefixCls) return customizePrefixCls;
 
-    return `Kts-antx3-${suffixCls}`;
+    return `ktsAnt3x-${suffixCls}`;
   },
 
   renderEmpty: defaultRenderEmpty,
