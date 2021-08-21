@@ -98,7 +98,7 @@ const createComponents = (components: TableComponents = {}) => {
     ...components,
     body: {
       ...components.body,
-      row: createBodyRow(bodyRow),
+      row: createBodyRow(bodyRow as any),
     },
   };
 };

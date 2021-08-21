@@ -246,7 +246,7 @@ class Button extends React.Component<ButtonProps, ButtonState> {
     }
 
     const iconType = loading ? 'loading' : icon;
-
+    
     const classes = classNames(prefixCls, className, {
       [`${prefixCls}-${type}`]: type,
       [`${prefixCls}-${shape}`]: shape,
