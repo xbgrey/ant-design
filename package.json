@@ -1,6 +1,6 @@
 {
-  "name": "antd",
-  "version": "3.26.20",
+  "name": "kts-components-antd-x3",
+  "version": "3.26.20-1",
   "description": "An enterprise-class UI design language and React components implementation",
   "keywords": [
     "ant",
@@ -144,7 +144,7 @@
     "warning": "~4.0.3"
   },
   "devDependencies": {
-    "@ant-design/colors": "^3.2.2",
+    "@ant-design/colors": "^6.0.0",
     "@ant-design/tools": "^9.0.1",
     "@qixian.cs/github-contributors-list": "^1.0.3",
     "@sentry/browser": "^5.4.0",
